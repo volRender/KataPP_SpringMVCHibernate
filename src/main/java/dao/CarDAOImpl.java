@@ -2,6 +2,7 @@ package dao;
 
 import model.Car;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,14 @@ public class CarDAOImpl implements CarDAO {
         carList.add(new Car("Car4", 4, "Vlad"));
         carList.add(new Car("Car5", 5, "Andrey"));
     }
+
     @Override
-    public List<Car> getCars(int count) {
+    public List<Car> getCarList() {
+        return carList;
+    }
+
+    @Override
+    public List<Car> getCountedCars(int count) {
         List<Car> carCountedList = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             carCountedList.add(carList.get(i));
