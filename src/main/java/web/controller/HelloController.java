@@ -25,5 +25,4 @@ public class HelloController {
 	public String printCars(ModelMap model) {
 		return "cars";
 	}
-	
 }
