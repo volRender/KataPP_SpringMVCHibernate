@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import service.CarService;
 import service.CarServiceImpl;
 
@@ -30,14 +31,8 @@ public class HelloController {
 	}
 
 	@GetMapping(value = "/cars")
-	public String printCars(ModelMap model) {
-		model.addAttribute("cars", carService.getCarList());
-		return "cars";
-	}
-
-	@GetMapping(value = "/cars?count={count}")
-	public String printCountedCars(@PathVariable("count") int count, ModelMap model) {
-		model.addAttribute("countedCars", carService.getCountedCars(count));
+	public String printCars(@RequestParam(value = "count", defaultValue = "5") int count, ModelMap model) {
+		model.addAttribute("cars", carService.getCountedCars(count));
 		return "cars";
 	}
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Repository
@@ -20,15 +21,14 @@ public class CarDAOImpl implements CarDAO {
     }
 
     @Override
-    public List<Car> getCarList() {
-        return carList;
-    }
-
-    @Override
     public List<Car> getCountedCars(int count) {
         List<Car> carCountedList = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            carCountedList.add(carList.get(i));
+        if (count >= 5) {
+            carCountedList.addAll(carList);
+        } else {
+            for (int i = 0; i < count; i++) {
+                carCountedList.add(carList.get(i));
+            }
         }
         return carCountedList;
     }
