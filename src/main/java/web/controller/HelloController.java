@@ -20,5 +20,10 @@ public class HelloController {
 		model.addAttribute("messages", messages);
 		return "index";
 	}
+
+	@GetMapping(value = "/cars")
+	public String printCars(ModelMap model) {
+		return "cars";
+	}
 	
 }
