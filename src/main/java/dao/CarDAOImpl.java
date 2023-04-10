@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Repository
 public class CarDAOImpl implements CarDAO {
@@ -22,14 +24,6 @@ public class CarDAOImpl implements CarDAO {
 
     @Override
     public List<Car> getCountedCars(int count) {
-        List<Car> carCountedList = new ArrayList<>();
-        if (count >= 5) {
-            carCountedList.addAll(carList);
-        } else {
-            for (int i = 0; i < count; i++) {
-                carCountedList.add(carList.get(i));
-            }
-        }
-        return carCountedList;
+        return carList.stream().limit(count).collect(Collectors.toList());
     }
 }
