@@ -15,7 +15,10 @@
     </properties>
 
     <dependencies>
+    <!--    for hibernate-->
+        
 
+    <!--  for mvc-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
