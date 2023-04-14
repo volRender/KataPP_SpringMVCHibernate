@@ -1,4 +1,4 @@
-package model;
+package mvcHiber.model;
 
 import javax.persistence.*;
 
@@ -20,7 +20,7 @@ public class User {
 
     public User() {}
 
-    public User(String firstName, String lastName, String email, Car car) {
+    public User(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
