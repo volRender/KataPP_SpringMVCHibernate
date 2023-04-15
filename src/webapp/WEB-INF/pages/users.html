@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    <table border="2">
+        <tr>
+            <th>Model</th>
+            <th>Series</th>
+            <th>Owner</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:utext="${user.getModel()}"></td>
+            <td th:utext="${user.getSeries()}"></td>
+            <td th:utext="${user.getOwner()}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
