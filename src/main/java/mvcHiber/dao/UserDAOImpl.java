@@ -36,4 +36,9 @@ public class UserDAOImpl implements UserDAO {
         em.merge(user);
     }
 
+    @Override
+    public void deleteUser(Long id) {
+        em.remove(getUser(id));
+    }
+
 }

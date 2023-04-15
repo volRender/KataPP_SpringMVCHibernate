@@ -20,8 +20,9 @@
             <td th:utext="${user.getFirstName()}"></td>
             <td th:utext="${user.getLastName()}"></td>
             <td th:utext="${user.getEmail()}"></td>
-            <td><a th:href="@{{id}/edit(id=${user.getId()})}">Edit</a><td>
-            <td><input type="button" value="Delete" onclick="window.location.href='new'"></td>
+            <td><a th:href="@{/{id}/edit(id=${user.getId()})}">Edit</a></td>
+            <td><form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
+            <input type="submit" value="Delete"> </form></td>
         </tr>
     </table>
 </div>
