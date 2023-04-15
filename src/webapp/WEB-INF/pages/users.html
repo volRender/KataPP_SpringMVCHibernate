@@ -3,10 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Get Users</title>
 </head>
 <body>
 <div>
+    <h2>All users info!</h2>
     <table border="2">
         <tr>
             <th>Model</th>
@@ -14,11 +15,13 @@
             <th>Owner</th>
         </tr>
         <tr th:each="user : ${users}">
-            <td th:utext="${user.getModel()}"></td>
-            <td th:utext="${user.getSeries()}"></td>
-            <td th:utext="${user.getOwner()}"></td>
+            <td th:utext="${user.getFirstName()}"></td>
+            <td th:utext="${user.getLastName()}"></td>
+            <td th:utext="${user.getEmail()}"></td>
         </tr>
     </table>
 </div>
+<br>
+<input type="button" value="Add user" onclick="window.location.href='new'">
 </body>
 </html>

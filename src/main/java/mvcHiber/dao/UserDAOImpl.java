@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
-
     @PersistenceContext
     private EntityManager em;
 
@@ -18,5 +17,11 @@ public class UserDAOImpl implements UserDAO {
     public List<User> allUsers() {
         TypedQuery<User> query = em.createQuery("SELECT u FROM User u", User.class);
         return query.getResultList();
+    }
+
+    @Override
+    public void addUser(User user) {
+        em.persist(user);
+        System.out.println("User with name: " + user.getFirstName() + " was added in db");
     }
 }
