@@ -13,11 +13,15 @@
             <th>Model</th>
             <th>Series</th>
             <th>Owner</th>
+            <th>Edit user</th>
+            <th>Delete user</th>
         </tr>
         <tr th:each="user : ${users}">
             <td th:utext="${user.getFirstName()}"></td>
             <td th:utext="${user.getLastName()}"></td>
             <td th:utext="${user.getEmail()}"></td>
+            <td><a th:href="@{{id}/edit(id=${user.getId()})}">Edit</a><td>
+            <td><input type="button" value="Delete" onclick="window.location.href='new'"></td>
         </tr>
     </table>
 </div>

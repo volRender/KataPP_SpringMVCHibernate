@@ -1,5 +1,8 @@
 package mvcHiber.model;
 
+
+
+
 import javax.persistence.*;
 
 @Entity

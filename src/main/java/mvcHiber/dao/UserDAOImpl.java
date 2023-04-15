@@ -5,12 +5,13 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
-    @PersistenceContext
+    @PersistenceContext(type=PersistenceContextType.EXTENDED)
     private EntityManager em;
 
     @Override
@@ -24,4 +25,15 @@ public class UserDAOImpl implements UserDAO {
         em.persist(user);
         System.out.println("User with name: " + user.getFirstName() + " was added in db");
     }
+
+    @Override
+    public User getUser(Long id) {
+        return em.find(User.class, id);
+    }
+
+    @Override
+    public void updateUser(User user, Long id) {
+        em.merge(user);
+    }
+
 }

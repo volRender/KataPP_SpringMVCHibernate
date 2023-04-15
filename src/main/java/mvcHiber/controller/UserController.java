@@ -6,9 +6,7 @@ import mvcHiber.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -29,8 +27,20 @@ public class UserController {
 	}
 
 	@PostMapping()
-	public String saveUser(@ModelAttribute("new1") User user) {
+	public String saveUser(@ModelAttribute("newUser") User user) {
 		userService.addUser(user);
+		return "redirect:/";
+	}
+
+	@GetMapping("/{id}/edit")
+	public String getUser(@PathVariable("id") long id, Model model) {
+		model.addAttribute("editedUser", userService.getUser(id));
+		return "editUser";
+	}
+
+	@PatchMapping("/{id}")
+	public String editUser(@ModelAttribute("editedUser") User user, @PathVariable("id") long id) {
+		userService.updateUser(user, id);
 		return "redirect:/";
 	}
 }
