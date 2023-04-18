@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/users")
 public class UserController {
 
 	private UserService userService;
@@ -18,7 +19,7 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@GetMapping( "/")
+	@GetMapping
 	public String printUsers(Model model) {
 		model.addAttribute("users", userService.allUsers());
 		return "users";
@@ -33,7 +34,7 @@ public class UserController {
 	@PostMapping()
 	public String saveUser(@ModelAttribute("newUser") User user) {
 		userService.addUser(user);
-		return "redirect:/";
+		return "redirect:/users";
 	}
 
 	@GetMapping("/{id}/edit")

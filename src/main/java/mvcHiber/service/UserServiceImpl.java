@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    private UserDAOImpl userDAO = new UserDAOImpl();
+    private UserDAOImpl userDAO;
 
     @Autowired
     public void setUserDAO(UserDAOImpl userDAO) {
