@@ -15,7 +15,7 @@ public class UserController {
 	private UserService userService;
 
 	@Autowired
-	public UserController(UserService userService) {
+	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 
@@ -31,7 +31,7 @@ public class UserController {
 		return "newUser";
 	}
 
-	@PostMapping()
+	@PostMapping
 	public String saveUser(@ModelAttribute("newUser") User user) {
 		userService.addUser(user);
 		return "redirect:/users";
@@ -46,12 +46,12 @@ public class UserController {
 	@PatchMapping("/{id}")
 	public String editUser(@ModelAttribute("editedUser") User user, @PathVariable("id") long id) {
 		userService.updateUser(user, id);
-		return "redirect:/";
+		return "redirect:/users";
 	}
 
 	@DeleteMapping("/{id}")
 	public String deleteUser(@PathVariable("id") long id) {
 		userService.deleteUser(id);
-		return "redirect:/";
+		return "redirect:/users";
 	}
 }
