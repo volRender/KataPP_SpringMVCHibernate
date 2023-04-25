@@ -17,9 +17,9 @@
             <th>Delete user</th>
         </tr>
         <tr th:each="user : ${users}">
+            <td th:utext="${user.getEmail()}"></td>
             <td th:utext="${user.getFirstName()}"></td>
             <td th:utext="${user.getLastName()}"></td>
-            <td th:utext="${user.getEmail()}"></td>
             <td><a th:href="@{/users/{id}/edit(id=${user.getId()})}">Edit</a></td>
             <td><form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
             <input type="submit" value="Delete"> </form></td>
